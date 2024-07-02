@@ -1,0 +1,251 @@
+* {
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    line-height: 1.4;
+    color: black;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.navbar {
+    background: rgb(0, 0, 0);
+    padding: 1.2rem;
+}
+
+.navbar-brand {
+    color: beige;
+    font-size: 2rem;
+    display: inline-block;
+    text-align: left;
+    text-decoration: none;
+}
+
+.navbar-nav {
+    text-align: right;
+    padding-left: 1rem;
+}
+
+.navbar-nav a {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: beige;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 3px;
+    transition: opacity 0.5s ease;
+}
+
+.navbar-nav a:hover {
+    opacity: 0.7;
+}
+
+.banner {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+.banner-title {
+    font-size: 3rem;
+    line-height: 1.2;
+    color: beige;
+    font-weight:  bold;
+}
+
+.banner-title span {
+    color: beige;
+    font-weight:  900;
+}
+
+/* blog */
+.blog {
+    background: rgb(255, 255, 255);
+}
+
+.blog-title {
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    letter-spacing: 3px;
+    text-align: center;
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+    font-size: x-large
+}
+
+.blog-img img,
+.blog-text img {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 1rem auto; /* Center the images and add 1rem margin from top and bottom */
+}
+
+.blog-text h2 {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 1rem 0;
+
+}
+
+.blog-text pre {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 175%;
+    font-size: larger;
+    text-align: left;
+    
+}
+
+.blog-text ul {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.blog-text a {
+    color: #0066ff;
+    padding-left: 1rem;
+}
+
+/* footer */
+footer {
+    background: black;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+}
+
+.social-links a {
+    border: 2px solid #fff;
+    color: #fff;
+    display: block;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    margin: 0 0.3rem;
+    transition: all 0.5s ease;
+}
+
+.social-links a:hover {
+    background: #fff;
+    color: grey;
+}
+
+.footer span {
+    margin-top: 1rem;
+    display: block;
+    letter-spacing: 2px;
+}
+
+/* Media Queries for smaller devices */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 2rem;
+    }
+
+    .navbar-nav a {
+        padding: 0.2rem 0.1rem;
+    }
+
+    .banner-title {
+        font-size: 2.5rem;
+    }
+
+    .blog-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-content img {
+        margin: 0 auto 2rem auto;
+        width: 300px;
+    }
+
+    .about-text > p {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .navbar-nav a {
+        font-size: 0.9rem;
+    }
+
+    .banner-title {
+        font-size: 2rem;
+    }
+
+    .blog-title {
+        font-size: 1.5rem;
+    }
+
+    .blog-item {
+        min-width: 100%;
+    }
+
+    .blog-text h2 {
+        font-size: 1.2rem;
+    }
+
+    .blog-text p {
+        font-size: 1rem;
+    }
+
+    .about-content img {
+        width: 250px;
+    }
+
+    .about-text > p {
+        font-size: 1rem;
+    }
+
+    .footer span {
+        font-size: 0.9rem;
+    }
+}
+.blog-banner {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.blog-banner-title {
+    font-size: 3rem;
+    line-height: 1.2;
+    color: beige;
+    font-weight:  bold;
+}
+
