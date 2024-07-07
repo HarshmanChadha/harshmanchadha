@@ -1,3 +1,4 @@
+/* General Styles */
 * {
     font-family: "Inconsolata", monospace;
     font-optical-sizing: auto;
@@ -17,6 +18,7 @@ img {
     display: block;
 }
 
+/* Navbar */
 .navbar {
     background: rgb(0, 0, 0);
     padding: 1.2rem;
@@ -63,15 +65,15 @@ img {
     font-size: 3rem;
     line-height: 1.2;
     color: beige;
-    font-weight:  bold;
+    font-weight: bold;
 }
 
 .banner-title span {
     color: beige;
-    font-weight:  900;
+    font-weight: 900;
 }
 
-/* blog */
+/* Blog */
 .blog {
     background: rgb(255, 255, 255);
 }
@@ -83,7 +85,7 @@ img {
     text-align: center;
     padding-bottom: 2rem;
     padding-top: 1rem;
-    font-size: x-large
+    font-size: x-large;
 }
 
 .blog-img img,
@@ -97,7 +99,6 @@ img {
 .blog-text h2 {
     font-family: 'Times New Roman', Times, serif;
     padding: 1rem 0;
-
 }
 
 .blog-text pre {
@@ -105,7 +106,12 @@ img {
     line-height: 175%;
     font-size: larger;
     text-align: left;
-    
+    white-space: pre-wrap; /* This makes sure the text wraps properly */
+    word-wrap: break-word; /* Breaks words that are too long */
+    overflow-wrap: break-word; /* Breaks words that are too long */
+    padding-right: 2rem;
+    padding-left: 3rem;
+
 }
 
 .blog-text ul {
@@ -117,7 +123,7 @@ img {
     padding-left: 1rem;
 }
 
-/* footer */
+/* Footer */
 footer {
     background: black;
     color: #fff;
@@ -233,6 +239,7 @@ footer {
         font-size: 0.9rem;
     }
 }
+
 .blog-banner {
     flex: 1;
     display: flex;
@@ -246,6 +253,5 @@ footer {
     font-size: 3rem;
     line-height: 1.2;
     color: beige;
-    font-weight:  bold;
+    font-weight: bold;
 }
-
