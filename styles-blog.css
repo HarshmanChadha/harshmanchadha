@@ -105,6 +105,7 @@ img {
     font-weight: bold;
 
 }
+
 .blog-text pre {
     font-family: 'Times New Roman', Times, serif;
     line-height: 175%;
@@ -113,8 +114,8 @@ img {
     white-space: pre-wrap; /* This makes sure the text wraps properly */
     word-wrap: break-word; /* Breaks words that are too long */
     overflow-wrap: break-word; /* Breaks words that are too long */
-    padding-right: 2rem;
-    padding-left: 3rem;
+    padding-right: 8rem;
+    padding-left: 8rem;
 
 }
 
