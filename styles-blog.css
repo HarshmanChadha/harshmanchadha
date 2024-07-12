@@ -100,7 +100,11 @@ img {
     font-family: 'Times New Roman', Times, serif;
     padding: 1rem 0;
 }
+.b3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
 
+}
 .blog-text pre {
     font-family: 'Times New Roman', Times, serif;
     line-height: 175%;
