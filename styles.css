@@ -267,6 +267,15 @@ footer {
         align-items: center;
     }
 
+    .blog-item {
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .blog-img img {
+        display: inline-block;
+    }
+
     .about-content {
         flex-direction: column;
         text-align: center;
@@ -277,9 +286,14 @@ footer {
         width: 300px;
     }
 
-    .about-text > p {
+    .about-text {
+        text-align: center;
         margin-left: 0;
         margin-right: 0;
+    }
+
+    .about-text > p {
+        font-size: 1rem;
     }
 }
 
@@ -324,19 +338,3 @@ footer {
         font-size: 0.9rem;
     }
 }
-.blog-banner {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: rgb(255, 255, 255);
-}
-
-.blog-banner-title {
-    font-size: 3rem;
-    line-height: 1.2;
-    color: beige;
-    font-weight:  bold;
-}
-
