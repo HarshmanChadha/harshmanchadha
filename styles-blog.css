@@ -168,83 +168,6 @@ footer {
     letter-spacing: 2px;
 }
 
-/* Media Queries for smaller devices */
-@media (max-width: 768px) {
-    .navbar-brand {
-        font-size: 2rem;
-    }
-
-    .navbar-nav a {
-        padding: 0.2rem 0.1rem;
-    }
-
-    .banner-title {
-        font-size: 2.5rem;
-    }
-
-    .blog-content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .about-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .about-content img {
-        margin: 0 auto 2rem auto;
-        width: 300px;
-    }
-
-    .about-text > p {
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .navbar-brand {
-        font-size: 1.5rem;
-    }
-
-    .navbar-nav a {
-        font-size: 0.9rem;
-    }
-
-    .banner-title {
-        font-size: 2rem;
-    }
-
-    .blog-title {
-        font-size: 1.5rem;
-    }
-
-    .blog-item {
-        min-width: 100%;
-    }
-
-    .blog-text h2 {
-        font-size: 1.2rem;
-    }
-
-    .blog-text p {
-        font-size: 1rem;
-    }
-
-    .about-content img {
-        width: 250px;
-    }
-
-    .about-text > p {
-        font-size: 1rem;
-    }
-
-    .footer span {
-        font-size: 0.9rem;
-    }
-}
-
 .blog-banner {
     flex: 1;
     display: flex;
@@ -259,4 +182,76 @@ footer {
     line-height: 1.2;
     color: beige;
     font-weight: bold;
+}
+
+
+/* Media Queries for smaller devices */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 2rem;
+    }
+
+    .navbar-nav a {
+        padding: 0.2rem 0.1rem;
+    }
+
+    .banner-title {
+        font-size: 1rem;
+    }
+
+    .blog-title {
+        font-size: 1.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .blog-img img,
+    .blog-text img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .blog-text pre {
+        padding-right: 2rem;
+        padding-left: 2rem;
+        font-size: medium;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .navbar-nav a {
+        font-size: 0.75rem;
+    }
+
+    .banner-title {
+        font-size: 1rem;
+    }
+
+    .blog-title {
+        font-size: 1.2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .blog-text h2 {
+        font-size: 1.2rem;
+    }
+
+    .blog-text pre {
+        font-size: medium;
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    .blog-text p {
+        font-size: 1rem;
+    }
+
+    .footer span {
+        font-size: 0.9rem;
+    }
 }
