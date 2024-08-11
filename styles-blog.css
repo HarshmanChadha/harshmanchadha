@@ -78,6 +78,11 @@ img {
     background: rgb(255, 255, 255);
 }
 
+b, strong {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold; /* Explicitly set the font-weight to bold */
+}
+
 .blog-title {
     text-transform: uppercase;
     color: rgb(0, 0, 0);
