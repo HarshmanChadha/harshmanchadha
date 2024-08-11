@@ -81,23 +81,10 @@ header {
     font-weight:  900;
 }
 
-/* blog */
+/* Blog Section */
 .blog {
     background: rgb(20, 63, 13);
     padding: 2rem 0;
-    
-}
-
-.blog-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.blog-item {
-    flex: 1;
-    margin: 1rem;
-    min-width: 300px;
 }
 
 .blog-title {
@@ -108,30 +95,50 @@ header {
     padding: 0.4rem 0.1rem;
     letter-spacing: 3px;
     text-align: center;
+    margin-bottom: 1.5rem;
 }
 
-.blog-img {
-    position: relative;
+.blog-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem; /* Space between items */
+    align-items: stretch;
+    padding: 0 1.5rem;
 }
 
-.blog-img span {
-    position: absolute;
-    right: 10px;
-    background: black;
-    color: #000000;
-    font-size: 1.4rem;
-    padding: 0.3rem 0.6rem;
+.blog-item {
+    background: beige;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.blog-img img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .blog-text {
-    margin: 2.2rem 0;
-    padding: 0 1rem;
-    color: beige;
-}
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
 
 .blog-text span {
-    font-weight: 300;
+    font-weight: 500;
     display: block;
+    color: rgba(25, 109, 8, 0.779);
     padding-bottom: 0.5rem;
 }
 
@@ -140,31 +147,33 @@ header {
     padding: 1rem 0;
     font-size: 1.65rem;
     font-weight: 500;
+    color: #333;
 }
 
 .blog-text p {
     font-family: 'Times New Roman', Times, serif;
     font-weight: 300;
     font-size: 1.1rem;
+    color: #555;
     opacity: 0.9;
     padding-bottom: 1.2rem;
+    flex-grow: 1;
 }
 
 .blog-text a {
     font-size: 1.1rem;
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: beige; /* Text color */
     display: inline-block;
-    background: beige;
-    color: #000000;
+    background: #1a472a; /* Dark Green Background */
     padding: 0.55rem 1.2rem;
     transition: all 0.5s ease;
-    margin-top: 1rem; /* Add this line to create space */
+    margin-top: 1rem;
+    align-self: flex-start;
 }
 
-
 .blog-text a:hover {
-    background: rgba(245, 245, 220, 0.529);
+    background: rgba(26, 71, 42, 0.8); /* Slightly lighter on hover */
 }
 
 /* about */
@@ -248,7 +257,7 @@ footer {
     letter-spacing: 2px;
 }
 
-/* Media Queries for smaller devices */
+/* Media Queries for tablets like iPad */
 @media (max-width: 768px) {
     .navbar-brand {
         font-size: 2rem;
@@ -263,8 +272,8 @@ footer {
     }
 
     .blog-content {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .blog-item {
@@ -297,6 +306,7 @@ footer {
     }
 }
 
+/* Media Queries for smaller devices like iPhone SE and iPhone 14 */
 @media (max-width: 480px) {
     .navbar-brand {
         font-size: 1.5rem;
@@ -307,34 +317,116 @@ footer {
     }
 
     .banner-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .blog-title {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .blog-item {
         min-width: 100%;
+        margin-bottom: 1rem;
     }
 
     .blog-text h2 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
     }
 
     .blog-text p {
-        font-size: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .blog-text a {
+        font-size: 0.95rem;
+        padding: 0.4rem 1rem;
     }
 
     .about-content img {
-        width: 250px;
+        width: 200px;
     }
 
     .about-text > p {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .footer span {
         font-size: 0.9rem;
+    }
+}
+/* General Styles for iPad Pro */
+@media (max-width: 1024px) {
+    /* Navbar */
+    .navbar-brand {
+        font-size: 2.5rem;
+    }
+
+    .navbar-nav a {
+        padding: 0.4rem 0.1rem;
+        font-size: 1.1rem;
+    }
+
+    /* Banner */
+    .banner-title {
+        font-size: 2.8rem;
+    }
+
+    /* Blog Section */
+    .blog-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .blog-item {
+        margin: 1rem 0;
+    }
+
+    .blog-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .blog-text p {
+        font-size: 1.05rem;
+    }
+
+    .blog-text a {
+        font-size: 1.1rem;
+        padding: 0.6rem 1.4rem;
+    }
+
+    /* About Section */
+    .about-content {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+    }
+
+    .about-content img {
+        width: 350px; /* Scales well on iPad Pro */
+        margin-right: 2rem;
+        margin-left: 0;
+    }
+
+    .about-text {
+        text-align: left;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    .about-text > p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* Footer */
+    .footer span {
+        font-size: 1rem;
+    }
+
+    .social-links a {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
     }
 }
