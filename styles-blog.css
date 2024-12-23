@@ -126,6 +126,16 @@ b, strong {
 
 .blog-text ul {
     font-family: 'Times New Roman', Times, serif;
+    margin: 1rem 0;
+    padding-left: 2rem;
+    list-style-type: disc;
+    line-height: 1.1;
+}
+
+.blog-text ul ul {
+    font-family: 'Times New Roman', Times, serif;
+    list-style-type: circle;
+    margin-left: 1.5rem;
 }
 
 .blog-text a {
