@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="blogs.css" />
+    <title>Backtesting a Trading Strategy in Python – Part 1</title>
+    <style>
+        code {
+            background: black;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="navbar-brand">harshmanchadha.in</a>
+                <div class="navbar-nav">
+                    <a href="index.html">home</a>
+                    <a href="index.html#blog">blogs</a>
+                    <a href="index.html#about">about</a>
+                    <a href="index.html#contact">contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <section class="blog-banner">
+            <h1 class="blog-banner-title">Backtesting a Trading Strategy in Python – Part 1</h1>
+        </section>
+
+        <section class="blog" id="blog">
+            <div class="container">
+                <article class="blog-text">
+                    <div class="blog-title">
+                        <span>22 March, 2025</span>
+                        <h2>Step-by-Step Guide for Beginners</h2>
+                        <img src="images/blog9.jpg" alt="Backtesting Strategy Cover">
+                    </div>
+
+                    <p>At this point, we’ve all heard a lot about Quant investing and probably even invested in some Quant-based fund. So as the market makes new bottoms every day and as my portfolio bleeds further, I decided that this might be a good time to get my hands on something new.</p>
+
+                    <p>I had some prior experience working on Python, mainly integrating it with finance in some form, and so exploring quantitative finance was on my to-do list since a long time. I think this is a good time to start.</p>
+
+                    <p>In this blog, I’m going to write about something that I find pretty interesting: Backtesting a strategy. Mind you, this is a rather new domain for me compared to stuff I’ve covered in previous blogs, so it might not be perfect—but I’ll try my best.</p>
+
+                    <div class="note">
+                        <strong>P.S.</strong> Don’t worry if you don’t have any experience with Python, what we are covering in this blog is very basic stuff. I’ll be leaving a few links down for those who need to start with Python, which will teach you the basics and help you set it up on your system. So just go through those and you’ll be set! <br>
+                        <a href="https://www.youtube.com/watch?v=YKSpANU8jPE&t=3s" target="_blank">Click here</a>
+                    </div>
+
+                    <p>Alright! So assuming you now have Python ready to go, let’s get started!</p>
+
+                    <h3>What is Backtesting?</h3>
+                    <p>Backtesting is the process of evaluating a trading strategy using historical data to determine its effectiveness before applying it in live markets. It allows traders and investors to simulate trades based on past price movements to assess profitability and risk.</p>
+
+                    <p>It basically tells you how good or bad a strategy would have performed in the past, and considering that the markets often repeat themselves, I’d say that if something worked superbly in the past, it has a fairly decent chance of working in the future as well.</p>
+
+                    <h3>Key Python Libraries for Backtesting</h3>
+                    <p>We’ll be using the following libraries, which you can install using:</p>
+                    <code>pip install yfinance pandas matplotlib backtrader</code>
+
+                    <ul>
+                        <li><strong>Pandas</strong>: Handles time-series data using DataFrames.</li>
+                        <li><strong>NumPy</strong>: Helps with numerical operations and vectorized computation.</li>
+                        <li><strong>Matplotlib</strong>: For plotting price data and signals.</li>
+                        <li><strong>yFinance</strong>: To fetch stock data from Yahoo Finance API.</li>
+                        <li><strong>Backtrader</strong>: Main framework to run the backtest with built-in indicators and simulation capabilities.</li>
+                    </ul>
+
+                    <p>We’ll use the classic “Golden Crossover” strategy for this blog: go long when the 50-day moving average crosses the 200-day moving average from below.</p>
+
+                    <h3>Step 1: Fetching Data</h3>
+                    <code>
+import yfinance as yf
+import pandas as pd
+import matplotlib.pyplot as plt
+
+ticker = 'RELIANCE.NS'
+data = yf.download(ticker)
+data.columns = data.columns.get_level_values(0)
+
+if data.empty:
+    raise ValueError(f"Failed to fetch data for {ticker}. Check ticker symbol or connection.")
+                    </code>
+
+                    <h3>Step 2: Computing Indicators</h3>
+                    <p>This is optional, as Backtrader has built-in indicators. But you can still try it manually:</p>
+                    <code>
+data['SMA_50'] = data['Close'].rolling(window=50).mean()
+data['SMA_200'] = data['Close'].rolling(window=200).mean()
+                    </code>
+
+                    <h3>Step 3: Buy/Sell Signals</h3>
+                    <code>
+data['Signal'] = 0
+
+data.loc[data['SMA_50'] > data['SMA_200'], 'Signal'] = 1
+
+data.loc[data['SMA_50'] < data['SMA_200'], 'Signal'] = -1
+                    </code>
+
+                    <h3>Step 4: Visualizing the Strategy</h3>
+                    <code>
+plt.figure(figsize=(12,6))
+plt.plot(data['Close'], label='Stock Price', alpha=0.5)
+plt.plot(data['SMA_50'], label='50-day SMA', linestyle='dashed')
+plt.plot(data['SMA_200'], label='200-day SMA', linestyle='dotted')
+plt.legend()
+plt.title(f'{ticker} Price with Moving Averages')
+plt.show()
+                    </code>
+                    <img src="images/b9-pic1.png" alt="MA Crossover Plot">
+
+                    <h3>Step 5: Using Backtrader</h3>
+                    <code>
+import backtrader as bt
+
+class SMACrossover(bt.Strategy):
+    def __init__(self):
+        self.sma50 = bt.indicators.SimpleMovingAverage(self.data.close, period=50)
+        self.sma200 = bt.indicators.SimpleMovingAverage(self.data.close, period=200)
+
+    def next(self):
+        if self.sma50[0] > self.sma200[0] and not self.position:
+            self.buy()
+        elif self.sma50[0] < self.sma200[0] and self.position:
+            self.sell()
+                    </code>
+
+                    <h3>Step 6: Running the Backtest</h3>
+                    <code>
+cerebro = bt.Cerebro()
+datafeed = bt.feeds.PandasData(dataname=data)
+cerebro.adddata(datafeed)
+cerebro.addstrategy(SMACrossover)
+cerebro.run()
+cerebro.plot()
+
+portfolio_value = cerebro.broker.getvalue()
+print(f'Final Portfolio Value: ₹{portfolio_value:.2f}')
+                    </code>
+                    <img src="images/b9-pic2.png" alt="Backtrader Output">
+                    <img src="images/b9-pic3.png" alt="Backtest Chart">
+
+                    <h3>Conclusion</h3>
+                    <p>So that’s it—we successfully backtested our first strategy! If you followed along, you should’ve seen your own results as well.</p>
+
+                    <p>This is just the beginning. In the next blog, we’ll go deeper by:</p>
+                    <ul>
+                        <li>Calculating returns and drawdowns</li>
+                        <li>Adding more indicators like RSI & MACD</li>
+                        <li>Optimizing strategy parameters</li>
+                    </ul>
+                    <p>Stay tuned!</p>
+
+                    <div class="back-links">
+                        <a href="index.html#blog">← Back to Blogs</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <hr>
+
+    <footer>
+        <section class="contact" id="contact">
+            <p>get in touch!</p>
+            <br>
+            <div class="social-links">
+                <a href="mailto:chadhaharshman@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.instagram.com/harshman.chadha" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/harshman-chadha-047825250/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <span>harshman.chadha</span>
+        </section>
+    </footer>
+</body>
+</html>
